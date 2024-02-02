@@ -38,3 +38,33 @@ def selfjoins(request):
     d={'EMPOBJECTS':EMPOBJECTS}
     return render(request,'selfjoins.html',d)
 
+
+def emp_mgr_dept(request):
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').all()
+    
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(mgr__ename='BLAKE')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname='RESEARCH')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='MARTIN')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='ALLEN')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname='ACCOUNTING')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(mgr__ename='KING')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(mgr__ename='JONES')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='KING')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='SCOTT')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname='SALES')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='JONES')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='BLAKE')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(ename='CLARK')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__startswith='S')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__startswith='R')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__startswith='A')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__endswith='H')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__endswith='G')
+    EMPOBJECTS=Emp.objects.select_related('deptno','mgr').filter(deptno__dname__endswith='S')
+    
+
+
+
+
+    d={'EMPOBJECTS':EMPOBJECTS}
+    return render(request,'emp_mgr_dept.html',d)
